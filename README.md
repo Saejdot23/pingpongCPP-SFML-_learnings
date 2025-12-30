@@ -26,16 +26,20 @@ While the `main.cpp` may look simple, this project utilizes deep layers of abstr
 
 ### Prerequisites
 You will need a C++ compiler (GCC/Clang or MSVC) and the SFML development files installed on your system.
+* **Windows:** Install SFML via [vcpkg](https://github.com/microsoft/vcpkg) or download the binaries.
+* **Ubuntu/Debian:** `sudo apt-get install libsfml-dev`
+* **MacOS:** `brew install sfml`
 
-**Linux (Ubuntu/Debian):**
 ```bash
-sudo apt-get install libsfml-dev
+# Clone the repo
+git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+cd your-repo-name
 
-What I Learned
-System Architecture: Understanding the Client-Server model of X11/Wayland (Linux) vs Win32 API (Windows).
+# Create build files
+mkdir build && cd build
+cmake ..
 
-Memory Management: Handling resource lifecycles and avoiding leaks in C++.
+# Build and Run
+cmake --build .
+./[YourExecutableName]
 
-Low-Level Graphics: How a simple "Draw" command interacts with GPU drivers via the OS Kernel.
-
-Physics Math: Implementing dot products and impulse-velocity changes for realistic movement.
