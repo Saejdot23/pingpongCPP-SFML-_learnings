@@ -1,23 +1,19 @@
-name: C/C++ CI
+runs-on: ubuntu-latest
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+steps:
+- uses: actions/checkout@v4
+- name: Run configure (if present)
+  run: |
+    if [ -f ./configure ]; then
+      echo "Found ./configure; making executable (if needed) and running it"
+      chmod +x ./configure || true
+      ./configure
+    else
+      echo "No ./configure script found; skipping configure step."
+    fi
+- name: make
+  run: make
+- name: make check
+  run: make check
+- name: make distcheck
+  run: make distcheck
